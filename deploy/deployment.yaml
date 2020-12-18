@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
@@ -15,13 +15,6 @@ spec:
         - image: dhadhazi/udagram-api-reverseproxy
           name: udagram-api-reverseproxy
           imagePullPolicy: Always
-          resources:
-            requests:
-              memory: "64Mi"
-              cpu: "250m"
-            limits:
-              memory: "1024Mi"
-              cpu: "500m"
           ports:
             - containerPort: 8080
       restartPolicy: Always
