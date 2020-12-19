@@ -2,21 +2,22 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: udagram-api-reverseproxy
-  name: udagram-api-reverseproxy
+    app: reverse-proxy
+  name: reverse-proxy
 spec:
   replicas: 1
-selector:
-  matchLabels:
-    app: udagram-api-reverseproxy
+  selector:
+    matchLabels:
+      app: reverse-proxy
   template:
     metadata:
       labels:
-        app: udagram-api-reverseproxy
+        app: reverse-proxy
     spec:
+      terminationGracePeriodSeconds: 30
       containers:
         - image: dhadhazi/udagram-api-reverseproxy
-          name: udagram-api-reverseproxy
+          name: udagram-reverseproxy
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
